@@ -1,0 +1,36 @@
+-- Create sequence
+create sequence SEQ_DEVICE_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+-- Create table
+create table ALARM_DEVICE
+(
+  DBID            NUMBER(19) primary key not null,
+  ACTIVE          NUMBER(1) not null,
+  BEGINUSETIME    TIMESTAMP(6),
+  DEVCODE         VARCHAR2(255 CHAR) not null,
+  DEVNAME         VARCHAR2(255 CHAR) not null,
+  FACTORY         VARCHAR2(255 CHAR),
+  GAOCHENG        VARCHAR2(255 CHAR),
+  HEIGHT          VARCHAR2(255 CHAR) not null,
+  INSTALLDATE     TIMESTAMP(6),
+  BDATA_POSITION  VARCHAR2(255 CHAR),
+  LATITUDE        VARCHAR2(255 CHAR) not null,
+  LONGTITUDE      VARCHAR2(255 CHAR) not null,
+  NO              VARCHAR2(255 CHAR),
+  OUTDATE         TIMESTAMP(6),
+  SIMID           VARCHAR2(255 CHAR),
+  TURNX           VARCHAR2(255 CHAR),
+  TURNY           VARCHAR2(255 CHAR),
+  TURNZ           VARCHAR2(255 CHAR),
+  ZOOMX           VARCHAR2(255 CHAR),
+  ZOOMY           VARCHAR2(255 CHAR),
+  ZOOMZ           VARCHAR2(255 CHAR),
+  ACCEPTPERSON_ID NUMBER(19) constraint FK_GKXP4MTNVJ5T144THBPQYV63N references ALARM_ACCEPT_PERSON (DBID),
+  DEVICETYPE_ID   NUMBER(19) constraint FK_Q3SCT0GA24IM7I20JUDSLJKF5 references ALARM_DEVICE_TYPE (DBID) not null,
+  REGION_ID       NUMBER(19) constraint FK_Q3SCT0GA24IM7I20JUDSLJKF6 references ALARM_REGION (DBID)
+)

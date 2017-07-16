@@ -1,0 +1,16 @@
+-- Create table
+create table ALARM_ALARM_RECORD
+(
+  DBID             NUMBER(19) primary key not null,
+  ACTIVE           NUMBER(1),
+  DEVICE_CODE      VARCHAR2(255 CHAR) not null,
+  DEVICE_TYPE_NAME VARCHAR2(255 CHAR),
+  ISSEND           NUMBER(1) not null,
+  ITEMNAME         VARCHAR2(255 CHAR),
+  ITEMVALUE        VARCHAR2(255 CHAR),
+  MESSAGE          VARCHAR2(255 CHAR) not null,
+  MESSAGE_STATUS   NUMBER(10) not null,
+  RECORDCODE       VARCHAR2(255 CHAR),
+  RECORDDATE       TIMESTAMP(6),
+  DEVICE_ID        NUMBER(19) constraint FK_TP309A97ICS19DYEEK3B9DKX7 references ALARM_DEVICE (DBID)
+)
